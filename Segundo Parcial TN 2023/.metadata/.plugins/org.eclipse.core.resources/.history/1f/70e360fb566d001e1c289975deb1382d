@@ -1,0 +1,63 @@
+package test;
+
+import java.time.LocalDate;
+
+import modelo.Sistema;
+
+public class Test {
+
+	public static void main(String[] args) {
+		Sistema s1 = new Sistema();
+		
+		try {
+			s1.agregarUsuario("usuarioCreador1", LocalDate.of(2023, 9, 1));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarUsuario("usuarioCreador2", LocalDate.of(2023, 9, 2));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarUsuario("usuarioCreador3", LocalDate.of(2023, 9, 3));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarUsuario("usuarioCreador4", LocalDate.of(2023, 9, 4));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarUsuario("usuarioCreador5", LocalDate.of(2023, 9, 5));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarUsuario("usuarioCreador6", LocalDate.of(2023, 9, 6));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarUsuario("usuarioCreador7", LocalDate.of(2023, 9, 7));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarUsuario("usuarioCreador8", LocalDate.of(2023, 9, 8));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

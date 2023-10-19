@@ -1,0 +1,66 @@
+package modelo;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SistemaYPF {
+
+	private List<Tarjeta> tarjetas;
+
+	public SistemaYPF() {
+		super();
+		this.tarjetas = new ArrayList<Tarjeta>();
+	}
+	
+	// Metodos de TARJETA
+	
+	public boolean agregarTarjeta(String codigo, String codigoCliente) throws Exception {
+		
+		return getTarjetas().add((new Tarjeta(proximoIDTarjeta(), codigo, codigoCliente)));
+		
+	}
+	
+	public Tarjeta traerTarjeta(String codigoCliente) {
+		
+		Tarjeta encontrada = null;
+		int i = 0;
+		while (encontrada == null && i < getTarjetas().size()) {
+			if(getTarjetas().get(i).getCodigoCliente().equals(codigoCliente)) {
+				encontrada = getTarjetas().get(i);
+			}
+			i++;
+		}
+		
+		return encontrada;
+	}
+	
+	private int proximoIDTarjeta() {
+		int id = 1;
+		if (!getTarjetas().isEmpty()) {
+			id = getTarjetas().get(getTarjetas().size()-1).getIdTarjeta()+1;
+		}
+		return id;
+	}
+	
+	public List<Tarjeta> traerTarjetasComprasEfectivo(LocalDate fechaDesde, LocalDate fechaHasta){
+		List<Tarjeta> aux = new ArrayList<Tarjeta>();
+		
+		
+		
+		return aux;
+	}
+	
+
+	public List<Tarjeta> getTarjetas() {
+		return tarjetas;
+	}
+
+	public void setTarjetas(List<Tarjeta> tarjetas) {
+		this.tarjetas = tarjetas;
+	}
+	
+	
+	
+}

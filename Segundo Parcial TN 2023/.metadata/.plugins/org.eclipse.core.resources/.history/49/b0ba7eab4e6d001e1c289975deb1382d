@@ -1,0 +1,31 @@
+package modelo;
+
+import java.util.List;
+
+public class Sistema {
+
+	private List<Usuario> lstUsuarios;
+	private List<Publicacion> lstPublicaciones;
+	private List<Comentario> lstComentarios;
+	public List<Usuario> getLstUsuarios() {
+		return lstUsuarios;
+	}
+	public void setLstUsuarios(List<Usuario> lstUsuarios) {
+		this.lstUsuarios = lstUsuarios;
+	}
+	public List<Publicacion> getLstPublicaciones() {
+		return lstPublicaciones;
+	}
+	public void setLstPublicaciones(List<Publicacion> lstPublicaciones) {
+		this.lstPublicaciones = lstPublicaciones;
+	}
+	public List<Comentario> getLstComentarios() {
+		return lstComentarios;
+	}
+	public void setLstComentarios(List<Comentario> lstComentarios) {
+		this.lstComentarios = lstComentarios;
+	}
+	
+	
+	
+}

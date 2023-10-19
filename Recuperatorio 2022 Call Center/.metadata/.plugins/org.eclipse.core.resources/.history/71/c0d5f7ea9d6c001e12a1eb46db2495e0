@@ -1,0 +1,31 @@
+package modulo;
+
+import java.time.LocalDate;
+import java.time.Period;
+
+public class Empleado extends Persona {
+	private int sueldoBase;
+
+	protected Empleado(int idPersona, String nombre, String apellido, long dni, LocalDate fechaDeAlta, int sueldoBase) {
+		super(idPersona, nombre, apellido, dni, fechaDeAlta);
+		this.sueldoBase = sueldoBase;
+	}
+
+	public int getSueldoBase() {
+		return sueldoBase;
+	}
+
+	public void setSueldoBase(int sueldoBase) {
+		this.sueldoBase = sueldoBase;
+	}
+
+	@Override
+	protected int antiguedadEnAnios() {
+		int antiguedad = (Period.between(fechaDeAlta, LocalDate.now().plusMonths(1).withDayOfMonth(1))).getYears();
+
+		return antiguedad;
+	}
+	
+	
+
+}

@@ -1,0 +1,13 @@
+package modelo;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public abstract class Publicacion {
+	
+	protected int idPublicacion;
+	protected LocalDate fecha;
+	protected LocalTime hora;
+	protected Usuario creador;
+	
+}

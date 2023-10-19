@@ -1,0 +1,22 @@
+package test;
+
+import java.time.LocalDate;
+
+import modulo.SistemaCallCenter;
+
+public class testTema1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		SistemaCallCenter s1 = new SistemaCallCenter();
+		
+		try {
+			s1.agregarCliente("Luis", "Perez", 11111111, LocalDate.of(2020, 1, 1), true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

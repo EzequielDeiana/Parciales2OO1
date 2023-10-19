@@ -1,0 +1,5 @@
+package modulo;
+
+public class Cliente extends Persona{
+
+}

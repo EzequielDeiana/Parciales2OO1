@@ -1,0 +1,52 @@
+package modulo;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public class Llamada {
+	private int idLlamada;
+	private LocalDate fecha;
+	private LocalTime hora;
+	private Cliente cliente;
+	private Empleado empleado;
+	private int nivelSatisfaccion;
+	public int getIdLlamada() {
+		return idLlamada;
+	}
+	public void setIdLlamada(int idLlamada) {
+		this.idLlamada = idLlamada;
+	}
+	public LocalDate getFecha() {
+		return fecha;
+	}
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
+	public LocalTime getHora() {
+		return hora;
+	}
+	public void setHora(LocalTime hora) {
+		this.hora = hora;
+	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
+	public int getNivelSatisfaccion() {
+		return nivelSatisfaccion;
+	}
+	public void setNivelSatisfaccion(int nivelSatisfaccion) {
+		this.nivelSatisfaccion = nivelSatisfaccion;
+	}
+	
+	
+	
+}

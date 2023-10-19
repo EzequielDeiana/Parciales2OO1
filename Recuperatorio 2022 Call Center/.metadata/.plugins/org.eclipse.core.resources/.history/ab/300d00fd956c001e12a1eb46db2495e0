@@ -1,0 +1,15 @@
+package modulo;
+
+import java.time.LocalDate;
+
+public abstract class Persona {
+
+	protected int idPersona;
+	protected String nombre;
+	protected String apellido;
+	protected long dni;
+	protected LocalDate fechaDeAlta;
+	
+	
+	
+}

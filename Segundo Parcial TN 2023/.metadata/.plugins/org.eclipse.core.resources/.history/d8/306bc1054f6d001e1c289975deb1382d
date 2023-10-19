@@ -1,0 +1,13 @@
+package modelo;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public class AvisoGeneral extends Publicacion{
+
+	protected AvisoGeneral(int idPublicacion, LocalDate fecha, LocalTime hora, Usuario creador) {
+		super(idPublicacion, fecha, hora, creador);
+		// TODO Auto-generated constructor stub
+	}
+	
+}

@@ -1,0 +1,22 @@
+package modelo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SistemaYPF {
+
+	private List<Tarjeta> tarjetas;
+
+	public SistemaYPF() {
+		super();
+		this.tarjetas = new ArrayList<Tarjeta>();
+	}
+	
+	public boolean traerTarjeta(String codigoCliente) {
+		
+		
+		
+		return false;
+	}
+	
+}

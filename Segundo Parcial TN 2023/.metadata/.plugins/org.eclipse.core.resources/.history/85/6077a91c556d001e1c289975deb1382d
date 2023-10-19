@@ -1,0 +1,136 @@
+package modelo;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Sistema {
+
+	private List<Usuario> lstUsuarios;
+	private List<Publicacion> lstPublicaciones;
+	private List<Comentario> lstComentarios;
+	
+	public Sistema() {
+		super();
+		this.lstUsuarios = new ArrayList<Usuario>();
+		this.lstPublicaciones = new ArrayList<Publicacion>();
+		this.lstComentarios = new ArrayList<Comentario>();
+	}
+	//Metodos de Usuario
+	public boolean agregarUsuario(String nombreUsuario, LocalDate fechaAlta) throws Exception{
+		if(traerUsuario(nombreUsuario) != null) {
+			throw new Exception("Ya existe un usuario con el nombre de Usuario elegido");
+		}
+		return getLstUsuarios().add(new Usuario(getProximoIDUsuario(),nombreUsuario,fechaAlta));
+	}
+	
+	public Usuario traerUsuario(String nombreUsuario) {
+		int i = 0;
+		boolean encontrado = false;
+		Usuario aux = null;
+		
+		while(i < getLstUsuarios().size() && encontrado == false) {
+			if(getLstUsuarios().get(i).getNombreUsuario().equals(nombreUsuario)) {
+				aux = getLstUsuarios().get(i);
+			}
+			i++;
+		}
+		return aux;
+	}
+	
+	private int getProximoIDUsuario() {
+		int id = 1;
+		
+		if(!getLstUsuarios().isEmpty()) {
+			id = getLstUsuarios().get(getLstUsuarios().size()-1).getIdUsuario()+1;
+		}
+		
+		return id;
+	}
+	//Metodos de Publicacion
+	public Publicacion traerPublicacion(String nombreUsuario, LocalDate fecha, LocalTime hora) {
+		int i = 0;
+		boolean encontrado = false;
+		Publicacion aux = null;
+		
+		while(i < getLstPublicaciones().size() && encontrado == false) {
+			if(getLstPublicaciones().get(i).getCreador().getNombreUsuario().equals(nombreUsuario) 
+					&& getLstPublicaciones().get(i).getFecha().isEqual(fecha)
+					&& getLstPublicaciones().get(i).getHora().equals(hora)) {
+				encontrado = true;
+				aux = getLstPublicaciones().get(i);
+			}
+			i++;
+		}
+		return aux;
+	}
+	
+	public boolean agregarPosteo(LocalDate fecha, LocalTime hora, Usuario creador, String texto, boolean publico) throws Exception{
+		if(traerPublicacion(creador.getNombreUsuario(), fecha, hora) != null) {
+			throw new Exception("Ya existe una publicacion con el mismo creador, fecha y hora");
+		}
+		
+		return getLstPublicaciones().add(new Posteo(getProximoIDPublicacion(),fecha, hora, creador, texto, publico));
+	}
+	
+	public boolean agregarAvisoGeneral(LocalDate fecha, LocalTime hora, Usuario creador, String titulo, String cuerpo) throws Exception{
+		if(traerPublicacion(creador.getNombreUsuario(), fecha, hora) != null) {
+			throw new Exception("Ya existe una publicacion con el mismo creador, fecha y hora");
+		}
+		return getLstPublicaciones().add(new AvisoGeneral(getProximoIDPublicacion(),fecha,hora,creador,titulo,cuerpo));
+	}
+	
+	public List<Publicacion> traerPublicacionPublicas(LocalDate fechaDesde, LocalDate fechaHasta){
+		List<Publicacion> aux = new ArrayList<Publicacion>();
+		
+		
+		
+	}
+	
+	private int getProximoIDPublicacion() {
+		int id = 1;
+		
+		if(!getLstPublicaciones().isEmpty()) {
+			id = getLstPublicaciones().get(getLstPublicaciones().size()-1).getIdPublicacion()+1;
+		}
+		
+		return id;
+	}
+	
+	//Metodos Comentario
+	public boolean agregarComentario(Integer identificacion, Publicacion publicacion, Usuario usuario, String texto) {
+		return getLstComentarios().add(new Comentario(getProximoIDComentario(),identificacion,publicacion,usuario,texto));
+	}
+	
+	private int getProximoIDComentario() {
+		int id = 1;
+		
+		if(!getLstComentarios().isEmpty()) {
+			id = getLstComentarios().get(getLstComentarios().size()-1).getIdComentario()+1;
+		}
+		
+		return id;
+	}
+	
+	public List<Usuario> getLstUsuarios() {
+		return lstUsuarios;
+	}
+	public void setLstUsuarios(List<Usuario> lstUsuarios) {
+		this.lstUsuarios = lstUsuarios;
+	}
+	public List<Publicacion> getLstPublicaciones() {
+		return lstPublicaciones;
+	}
+	public void setLstPublicaciones(List<Publicacion> lstPublicaciones) {
+		this.lstPublicaciones = lstPublicaciones;
+	}
+	public List<Comentario> getLstComentarios() {
+		return lstComentarios;
+	}
+	public void setLstComentarios(List<Comentario> lstComentarios) {
+		this.lstComentarios = lstComentarios;
+	}
+	
+	
+}

@@ -1,0 +1,13 @@
+package modelo;
+
+import java.time.LocalDate;
+
+public class Usuario {
+
+	private int idUsuario;
+	private String nombreUsuario;
+	private LocalDate fechaAlta;
+	
+	
+	
+}

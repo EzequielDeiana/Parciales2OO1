@@ -1,0 +1,11 @@
+package test;
+
+import modelo.Sistema;
+
+public class Test {
+
+	public static void main(String[] args) {
+		Sistema s1 = new Sistema();
+	}
+
+}

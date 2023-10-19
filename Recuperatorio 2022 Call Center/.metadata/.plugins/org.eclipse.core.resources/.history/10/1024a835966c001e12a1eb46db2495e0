@@ -1,0 +1,12 @@
+package modulo;
+
+import java.time.LocalDate;
+
+public class Empleado extends Persona{
+
+	protected Empleado(int idPersona, String nombre, String apellido, long dni, LocalDate fechaDeAlta) {
+		super(idPersona, nombre, apellido, dni, fechaDeAlta);
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,16 @@
+package modelo;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public class AvisoGeneral extends Publicacion{
+	
+	private String titulo;
+	private String cuerpo;
+
+	protected AvisoGeneral(int idPublicacion, LocalDate fecha, LocalTime hora, Usuario creador) {
+		super(idPublicacion, fecha, hora, creador);
+		
+	}
+	
+}

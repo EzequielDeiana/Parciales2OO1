@@ -1,0 +1,13 @@
+package modulo;
+
+import java.time.LocalDate;
+
+public class Empleado extends Persona{
+	private int sueldoBase;
+	
+	protected Empleado(int idPersona, String nombre, String apellido, long dni, LocalDate fechaDeAlta, int sueldoBase) {
+		super(idPersona, nombre, apellido, dni, fechaDeAlta);
+		this.sueldoBase = sueldoBase;
+	}
+
+}

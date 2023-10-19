@@ -1,0 +1,16 @@
+package modelo;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public class Posteo extends Publicacion{
+	private String texto;
+	private boolean publico;
+	
+	protected Posteo(int idPublicacion, LocalDate fecha, LocalTime hora, Usuario creador, String texto, boolean publico) {
+		super(idPublicacion, fecha, hora, creador);
+		this.texto = texto;
+		this.publico = publico;
+	}
+
+}

@@ -1,0 +1,14 @@
+package modelo;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public class Efectivo extends Compra{
+	private double puntosExtra;
+	
+	protected Efectivo(LocalDate fecha, LocalTime hora, double puntosPorLitro, double litrosComprados) {
+		super(fecha, hora, puntosPorLitro, litrosComprados);
+		// TODO Auto-generated constructor stub
+	}
+	
+}

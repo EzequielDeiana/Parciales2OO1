@@ -1,0 +1,12 @@
+package test;
+
+import modulo.SistemaCallCenter;
+
+public class testTema1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		SistemaCallCenter s1 = new SistemaCallCenter();
+	}
+
+}

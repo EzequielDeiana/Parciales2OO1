@@ -1,0 +1,131 @@
+package modulo;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SistemaCallCenter {
+	private List<Llamada> lstLlamada;
+	private List<Persona> lstPersona;
+
+	public SistemaCallCenter() {
+		super();
+		this.lstLlamada = new ArrayList<Llamada>();
+		this.lstPersona = new ArrayList<Persona>();
+
+	}
+
+	// Metodos de PERSONA
+	public boolean agregarCliente(String nombre, String apellido, long dni, LocalDate fechaDeAlta, boolean activo)
+			throws Exception {
+		Cliente aux = (Cliente) traerPersona(dni);
+
+		if (aux != null) {
+			throw new Exception("Ya existe un cliente con el dni asignado");
+		}
+
+		return getLstPersona().add(new Cliente(calcularProxIDPersona(), nombre, apellido, dni, fechaDeAlta, activo));
+	}
+
+	public boolean agregarEmpleado(String nombre, String apellido, long dni, LocalDate fechaDeAlta, int sueldoBase)
+			throws Exception {
+		Empleado aux = (Empleado) traerPersona(dni);
+
+		if (aux != null) {
+			throw new Exception("Ya existe un empleado con el dni asignado");
+		}
+
+		return getLstPersona()
+				.add(new Empleado(calcularProxIDPersona(), nombre, apellido, dni, fechaDeAlta, sueldoBase));
+	}
+
+	public Persona traerPersona(long dni) {
+		int i = 0;
+		boolean encontrado = false;
+		Persona aux = null;
+		while (i < getLstPersona().size() && encontrado == false) {
+			if (dni == getLstPersona().get(i).getDni()) {
+				encontrado = true;
+				aux = getLstPersona().get(i);
+			}
+		}
+		return aux;
+	}
+
+	public List<Cliente> traerClientes(boolean estadoCliente) {
+		List<Cliente> lstAux = new ArrayList<Cliente>();
+
+		for (Persona persona : getLstPersona()) {
+			if (persona instanceof Cliente) {
+				Cliente clienteAux = (Cliente) persona;
+				lstAux.add(clienteAux);
+			}
+		}
+
+		return lstAux;
+	}
+
+	public List<Persona> traerPersonasAntiguedad(int mayorIgualA) {
+		List<Persona> lstAux = new ArrayList<Persona>();
+
+		for (Persona persona : getLstPersona()) {
+			int anioAux = persona.getFechaDeAlta().getYear();
+			if (mayorIgualA >= anioAux) {
+				lstAux.add(persona);
+			}
+		}
+
+		return lstAux;
+	}
+
+	private int calcularProxIDPersona() {
+		int id = 1;
+
+		if (!getLstPersona().isEmpty()) {
+			id = getLstPersona().get(getLstPersona().size() - 1).getIdPersona() + 1;
+		}
+
+		return id;
+	}
+	// Metodos de LLAMADA
+
+	public boolean agregarLlamada(LocalDate fecha, LocalTime hora, Cliente cliente, Empleado empleado,
+			int nivelDeSatisfaccion) throws Exception {
+
+		return getLstLlamada()
+				.add(new Llamada(calcularProxIDLlamada(), fecha, hora, cliente, empleado, nivelDeSatisfaccion));
+
+	}
+
+	public List<Llamada> traerLlamadas(LocalDate fecha, LocalTime horaDesde, LocalTime horaHasta) {
+		List<Llamada> lstAux = new ArrayList<Llamada>();
+
+		return lstAux;
+	}
+
+	private int calcularProxIDLlamada() {
+		int id = 1;
+		if (!getLstLlamada().isEmpty()) {
+			id = getLstLlamada().get(getLstLlamada().size() - 1).getIdLlamada() + 1;
+		}
+		return id;
+	}
+
+	public List<Llamada> getLstLlamada() {
+		return lstLlamada;
+	}
+
+	public void setLstLlamada(List<Llamada> lstLlamada) {
+		this.lstLlamada = lstLlamada;
+	}
+
+	public List<Persona> getLstPersona() {
+		return lstPersona;
+	}
+
+	public void setLstPersona(List<Persona> lstPersona) {
+		this.lstPersona = lstPersona;
+	}
+
+}

@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+D:\Estudio Universidad\Estudio 2023 Segundo Cuatri\8610 Objetos 1\Practica Segundo Parcial C2\Dos Parciales Arturo\POO_1-main\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+1696264553.index
+3849111331.index

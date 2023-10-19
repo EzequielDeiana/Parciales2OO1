@@ -1,0 +1,16 @@
+package test;
+
+import java.time.LocalDate;
+
+import modelo.Sistema;
+
+public class Test {
+
+	public static void main(String[] args) {
+		Sistema s1 = new Sistema();
+		
+		s1.agregarUsuario("usuarioCreador1", LocalDate.of(2023, 9, 1));
+		
+	}
+
+}

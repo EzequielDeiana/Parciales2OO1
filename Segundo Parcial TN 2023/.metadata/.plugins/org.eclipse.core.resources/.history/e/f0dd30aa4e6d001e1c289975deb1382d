@@ -1,0 +1,11 @@
+package modelo;
+
+import java.util.List;
+
+public class Sistema {
+
+	private List<Usuario> lstUsuarios;
+	private List<Publicacion> lstPublicaciones;
+	private List<Comentario> lstComentarios;
+	
+}

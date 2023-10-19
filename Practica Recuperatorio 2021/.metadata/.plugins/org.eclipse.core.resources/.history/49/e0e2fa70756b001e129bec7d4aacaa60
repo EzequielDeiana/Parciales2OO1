@@ -1,0 +1,15 @@
+package modelo;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public abstract class Compra {
+
+	protected int idCompra;
+	protected LocalDate fecha;
+	protected LocalTime hora;
+	protected double puntosPorLitro;
+	protected double litrosComprados;
+	
+	
+}

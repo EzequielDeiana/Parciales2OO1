@@ -1,0 +1,114 @@
+package modelo;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Tarjeta {
+
+	private int idTarjeta;
+	private String codigo;
+	private String codigoCliente;
+	private List<Compra> compras;
+
+	public Tarjeta(int idTarjeta, String codigo, String codigoCliente) throws Exception {
+		super();
+		this.idTarjeta = idTarjeta;
+		setCodigo(codigo);
+		this.codigoCliente = codigoCliente;
+		this.compras = new ArrayList<Compra>();
+	}
+
+	public int getIdTarjeta() {
+		return idTarjeta;
+	}
+
+	public void setIdTarjeta(int idTarjeta) {
+		this.idTarjeta = idTarjeta;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) throws Exception {
+		if (codigo.length() > 12) {
+			throw new Exception("Tarjeta invalida");
+		} // TODO: Lanza una excepción de tarjeta inválida en caso de que el código no
+			// tenga una longitud de 12 caracteres, con 6 números y 6 letras
+		this.codigo = codigo;
+	}
+
+	// Metodos de COMPRA
+	// Efectivo
+	public boolean agregarCompra(LocalDate fecha, LocalTime hora, double puntosPorLitro, double litrosComprados,
+			double puntosExtra) {
+		boolean resultado = false;
+
+		Efectivo aux = new Efectivo(fecha, hora, puntosPorLitro, litrosComprados, puntosExtra);
+
+		aux.idCompra = proximoIDCompra();
+
+		if (getCompras().add(aux)) {
+			resultado = true;
+		}
+
+		return resultado;
+	}
+
+	// Electronica
+	public boolean agregarCompra(LocalDate fecha, LocalTime hora, double puntosPorLitro, double litrosComprados,
+			String medio, double puntosDeRegalo) {
+		boolean resultado = false;
+
+		Electronica aux = new Electronica(fecha, hora, puntosPorLitro, litrosComprados, medio, puntosDeRegalo);
+
+		aux.idCompra = proximoIDCompra();
+
+		if (getCompras().add(aux)) {
+			resultado = true;
+		}
+
+		return resultado;
+	}
+
+	private int proximoIDCompra() {
+		int id = 1;
+		if (!getCompras().isEmpty()) {
+			id = getCompras().get(getCompras().size() - 1).getIdCompra() + 1;
+		}
+		return id;
+	}
+
+	// Calcular Puntaje
+	
+	public double calcularPuntaje(LocalDate fecha) {
+		double suma;
+		
+		return suma;
+	}
+
+	public String getCodigoCliente() {
+		return codigoCliente;
+	}
+
+	public void setCodigoCliente(String codigoCliente) {
+		this.codigoCliente = codigoCliente;
+	}
+
+	public List<Compra> getCompras() {
+		return compras;
+	}
+
+	public void setCompras(List<Compra> compras) {
+		this.compras = compras;
+	}
+
+	@Override
+	public String toString() {
+		return "Tarjeta [idTarjeta=" + idTarjeta + ", codigo=" + codigo + ", codigoCliente=" + codigoCliente
+				+ ", compras=" + compras + "]";
+	}
+
+}

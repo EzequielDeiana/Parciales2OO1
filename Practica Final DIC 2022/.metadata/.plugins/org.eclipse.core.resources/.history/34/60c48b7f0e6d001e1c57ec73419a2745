@@ -1,0 +1,191 @@
+package modelo;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SistemaDistribuidora {
+	private List<Tarifa> lstTarifa;
+	private List<Lectura> lstLectura;
+	private List<Cliente> lstCliente;
+
+	public SistemaDistribuidora() {
+		super();
+		this.lstTarifa = new ArrayList<Tarifa>();
+		this.lstLectura = new ArrayList<Lectura>();
+		this.lstCliente = new ArrayList<Cliente>();
+	}
+
+	// Metodos Cliente
+
+	public boolean agregarCliente(long numeroCliente, String nombre, String apellido, int dni, int kWhSubsidio) {
+		boolean resultado = false;
+		ClienteResidencial aux = new ClienteResidencial(numeroCliente, nombre, apellido, dni, kWhSubsidio);
+		aux.id = getProximoIDCliente();
+
+		if (getLstCliente().add(aux)) {
+			resultado = true;
+		}
+		return resultado;
+	}
+
+	public boolean agregarCliente(long numeroCliente, long cuit, String razonSocial) {
+		boolean resultado = false;
+		ClienteCorporativo aux = new ClienteCorporativo(numeroCliente, cuit, razonSocial);
+		aux.id = getProximoIDCliente();
+
+		if (getLstCliente().add(aux)) {
+			resultado = false;
+		}
+
+		return resultado;
+	}
+
+	public Cliente traerCliente(long numeroCliente) {
+
+		int i = 0;
+		boolean encontrado = false;
+		Cliente aux = null;
+		while (i < getLstCliente().size() && encontrado == false) {
+			if (numeroCliente == getLstCliente().get(i).getNumeroCliente()) {
+				encontrado = true;
+				aux = getLstCliente().get(i);
+			}
+			i++;
+		}
+		return aux;
+	}
+
+	private int getProximoIDCliente() {
+		int id = 1;
+
+		if (!getLstCliente().isEmpty()) {
+			id = getLstCliente().get(getLstCliente().size() - 1).getId() + 1;
+		}
+
+		return id;
+	}
+
+	// Metodos de Tarifa
+
+	public boolean agregarTarifa(int consumoDesde, int consumoHasta, float cargoFijo, float cargoVariable) {
+		return getLstTarifa()
+				.add(new Tarifa(getProximoIDTarifa(), consumoDesde, consumoHasta, cargoFijo, cargoVariable));
+	}
+
+	public Tarifa traerTarifa(int consumo) {
+
+		int i = 0;
+		boolean encontrado = false;
+		Tarifa aux = null;
+
+		while (i < getLstTarifa().size() && encontrado == false) {
+
+			if (getLstTarifa().get(i).getConsumoDesde() <= consumo
+					&& consumo <= getLstTarifa().get(i).getConsumoHasta()) {
+				aux = getLstTarifa().get(i);
+				encontrado = true;
+			}
+			i++;
+		}
+
+		return aux;
+	}
+
+	private int getProximoIDTarifa() {
+		int id = 1;
+
+		if (!getLstTarifa().isEmpty()) {
+			id = getLstTarifa().get(getLstTarifa().size() - 1).getId() + 1;
+		}
+
+		return id;
+	}
+
+	// Metodos de Lectura
+
+	public boolean agregarLectura(LocalDate fecha, Cliente cliente, int estadoMedidor) {
+		return getLstLectura().add(new Lectura(getProximoIDLectura(), fecha, cliente, estadoMedidor));
+	}
+
+	public Lectura traerLectura(int mes, int anio, Cliente cliente) {
+		int i = 0;
+		boolean encontrado = false;
+		Lectura aux = null;
+
+		while (i < getLstLectura().size() && encontrado == false) {
+			if (getLstLectura().get(i).getCliente().equals(cliente)) {
+				int mesAux = getLstLectura().get(i).getFecha().getMonthValue();
+				int anioAux = getLstLectura().get(i).getFecha().getYear();
+				if (mesAux == mes && anioAux == anio) {
+					encontrado = true;
+					aux = getLstLectura().get(i);
+				}
+			}
+			i++;
+		}
+		return aux;
+	}
+
+	private int getProximoIDLectura() {
+		int id = 1;
+
+		if (!getLstLectura().isEmpty()) {
+			id = getLstLectura().get(getLstLectura().size() - 1).getId() + 1;
+		}
+
+		return id;
+	}
+
+	// Calcular Total a Cobrar
+
+	public float calcularTotalACobrar(int mes, int anio, Cliente cliente) {
+		Lectura lectura1 = traerLectura(mes, anio, cliente);
+		Lectura lectura2 = traerLectura(lectura1.getFecha().getMonth().minus(1).getValue(), lectura1.getFecha().getYear()-1, cliente);
+		
+		int consumo = lectura1.calcularConsumo(lectura2);
+		
+		Tarifa tarifa1 = traerTarifa(consumo);
+		float totalVariable = tarifa1.getCargoVariable() * consumo;
+		
+		if(cliente instanceof ClienteResidencial) {
+			ClienteResidencial clienteAux = (ClienteResidencial) cliente;
+			if(clienteAux.getkWhSubsidio() > 0) {
+				float descuento = tarifa1.getCargoVariable() * clienteAux.getkWhSubsidio();
+				System.out.println(descuento);
+				if(totalVariable >= descuento) {
+					totalVariable = totalVariable - descuento;
+				} else {
+					totalVariable = 0;
+				}
+			}
+		}
+		
+		return tarifa1.getCargoFijo() + totalVariable;
+	}
+
+	public List<Tarifa> getLstTarifa() {
+		return lstTarifa;
+	}
+
+	public void setLstTarifa(List<Tarifa> lstTarifa) {
+		this.lstTarifa = lstTarifa;
+	}
+
+	public List<Lectura> getLstLectura() {
+		return lstLectura;
+	}
+
+	public void setLstLectura(List<Lectura> lstLectura) {
+		this.lstLectura = lstLectura;
+	}
+
+	public List<Cliente> getLstCliente() {
+		return lstCliente;
+	}
+
+	public void setLstCliente(List<Cliente> lstCliente) {
+		this.lstCliente = lstCliente;
+	}
+
+}

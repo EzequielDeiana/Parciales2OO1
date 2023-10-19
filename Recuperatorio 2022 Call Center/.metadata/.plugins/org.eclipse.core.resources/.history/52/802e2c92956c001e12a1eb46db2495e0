@@ -1,0 +1,16 @@
+package modulo;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public class Llamada {
+	private int idLlamada;
+	private LocalDate fecha;
+	private LocalTime hora;
+	private Cliente cliente;
+	private Empleado empleado;
+	private int nivelSatisfaccion;
+	
+	
+	
+}

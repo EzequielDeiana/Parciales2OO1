@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+D:\Estudio Universidad\Estudio 2023 Segundo Cuatri\8610 Objetos 1\Practica Segundo Parcial C2\Practica Final DIC 2022\.metadata\.plugins\org.eclipse.jdt.core
+3479959684.index
+1696264553.index
+1865797976.index
