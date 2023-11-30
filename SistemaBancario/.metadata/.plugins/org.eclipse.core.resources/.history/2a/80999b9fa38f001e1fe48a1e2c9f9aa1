@@ -1,0 +1,13 @@
+package modulo;
+
+import java.time.LocalDate;
+
+public abstract class CuentaBancaria {
+	protected int idCuentaBancaria;
+	protected Titular titular;
+	protected float saldo;
+	protected String nroCuenta;
+	protected LocalDate fechaAlta;
+	
+	
+}

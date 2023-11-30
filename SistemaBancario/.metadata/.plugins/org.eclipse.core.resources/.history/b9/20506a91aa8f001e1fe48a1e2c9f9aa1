@@ -1,0 +1,53 @@
+package test;
+
+import modulo.SistemaBancario;
+
+public class Test {
+
+	public static void main(String[] args) {
+		SistemaBancario s1 = new SistemaBancario();
+		
+		System.out.println(1);
+		
+		try {
+			s1.agregarTitular("Persona", "Uno", 11111111);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarTitular("Persona", "Dos", 22222222);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarTitular("Persona", "Tres", 33333333);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarTitular("Persona", "Cuatro", 44444444);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarTitular("Persona", "Cinco", 55555555);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarTitular("Persona", "Seis", 66666666);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println(s1.getLstTitulares());
+		
+	}
+
+}

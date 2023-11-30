@@ -1,0 +1,14 @@
+package modulo;
+
+import java.time.LocalDate;
+
+public class CuentaAhorro extends CuentaBancaria{
+
+	private float limiteExtraccion;
+	
+	public CuentaAhorro(int idCuentaBancaria, Titular titular, float saldo, String nroCuenta, LocalDate fechaAlta, float limiteExtraccion) {
+		super(idCuentaBancaria, titular, saldo, nroCuenta, fechaAlta);
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,50 @@
+package modulo;
+
+import java.time.LocalDate;
+
+public class CuentaCorriente extends CuentaBancaria{
+	
+	private boolean cobraSueldo;
+	private float costoMantenimiento;
+	private boolean esPremium;
+	
+	public CuentaCorriente(int idCuentaBancaria, Titular titular, float saldo, String nroCuenta, LocalDate fechaAlta, boolean cobraSueldo, float costoMantenimiento, boolean esPremium) {
+		super(idCuentaBancaria, titular, saldo, nroCuenta, fechaAlta);
+		this.cobraSueldo = cobraSueldo;
+		this.costoMantenimiento = costoMantenimiento;
+		this.esPremium = esPremium;
+	}
+
+	public boolean isCobraSueldo() {
+		return cobraSueldo;
+	}
+
+	public void setCobraSueldo(boolean cobraSueldo) {
+		this.cobraSueldo = cobraSueldo;
+	}
+
+	public float getCostoMantenimiento() {
+		return costoMantenimiento;
+	}
+
+	public void setCostoMantenimiento(float costoMantenimiento) {
+		this.costoMantenimiento = costoMantenimiento;
+	}
+
+	public boolean isEsPremium() {
+		return esPremium;
+	}
+
+	public void setEsPremium(boolean esPremium) {
+		this.esPremium = esPremium;
+	}
+
+	@Override
+	public boolean esNumeroDeCuentaValido(String nroCuenta) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
+
+}

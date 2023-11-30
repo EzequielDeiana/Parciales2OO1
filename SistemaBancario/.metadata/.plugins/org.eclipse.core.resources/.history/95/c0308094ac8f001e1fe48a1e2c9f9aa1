@@ -1,0 +1,125 @@
+package test;
+
+import java.time.LocalDate;
+
+import modulo.SistemaBancario;
+
+public class Test {
+
+	public static void main(String[] args) {
+		SistemaBancario s1 = new SistemaBancario();
+		
+		System.out.println(1);
+		
+		try {
+			s1.agregarTitular("Persona", "Uno", 11111111);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarTitular("Persona", "Dos", 22222222);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarTitular("Persona", "Tres", 33333333);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarTitular("Persona", "Cuatro", 44444444);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarTitular("Persona", "Cinco", 55555555);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarTitular("Persona", "Seis", 66666666);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println(s1.getLstTitulares());
+		
+		
+		System.out.println(2);
+		
+		try {
+			s1.agregarCuentaCorriente(s1.traerTitular(11111111), 300000.0f, "CC11111111", LocalDate.of(2023, 10, 24), true, 0, false);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarCuentaCorriente(s1.traerTitular(22222222), 1750000.0f, "CC22222222", LocalDate.of(2023, 10, 24), false, 3000.0f, true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarCuentaCorriente(s1.traerTitular(33333333), 250000.0f, "CC33333333", LocalDate.of(2023, 10, 26), true, 3000.0f, false);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarCuentaAhorro(s1.traerTitular(44444444), 120000.0f, "CA44444444", LocalDate.of(2023, 10, 24), 10000.0f);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarCuentaAhorro(s1.traerTitular(55555555), 89000.0f, "CA55555555", LocalDate.of(2023, 10, 24), 8900.0f);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarCuentaAhorro(s1.traerTitular(66666666), 750000f, "CA66666666", LocalDate.of(2023, 10, 26), 7500.0f);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println(s1.getLstCuentasBancarias());
+		
+		System.out.println(3);
+		
+		System.out.println(s1.traerCuentasSinCostoMantenimientoEntreFechas(LocalDate.of(2023, 10, 24), LocalDate.of(2023, 10, 25)));
+		
+		System.out.println(4);
+		
+		System.out.println(s1.titularesConCuentaPremium(1000000, 2000000));
+		
+		System.out.println(5);
+		
+		try {
+			s1.agregarTitular("Persona", "Dos", 22222222);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println(6);
+		
+		try {
+			s1.agregarCuentaCorriente(s1.traerTitular(33333333), 250000.0f, "CC33333333", LocalDate.of(2023, 10, 26), true, 3000.0f, false);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+
+}

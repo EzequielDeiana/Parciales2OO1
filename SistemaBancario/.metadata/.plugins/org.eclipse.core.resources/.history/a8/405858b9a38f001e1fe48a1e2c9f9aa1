@@ -1,0 +1,12 @@
+package modulo;
+
+import java.time.LocalDate;
+
+public class CuentaCorriente extends CuentaBancaria{
+
+	public CuentaCorriente(int idCuentaBancaria, Titular titular, float saldo, String nroCuenta, LocalDate fechaAlta) {
+		super(idCuentaBancaria, titular, saldo, nroCuenta, fechaAlta);
+		// TODO Auto-generated constructor stub
+	}
+
+}

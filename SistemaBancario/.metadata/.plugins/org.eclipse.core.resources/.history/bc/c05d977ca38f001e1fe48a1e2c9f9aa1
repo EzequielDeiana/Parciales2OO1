@@ -1,0 +1,8 @@
+package modulo;
+
+public class Titular {
+	private int idTitular;
+	private String nombre;
+	private String apellido;
+	private long dni;
+}

@@ -1,0 +1,46 @@
+package modulo;
+
+public class Titular {
+	private int idTitular;
+	private String nombre;
+	private String apellido;
+	private long dni;
+	
+	public int getIdTitular() {
+		return idTitular;
+	}
+	public void setIdTitular(int idTitular) {
+		this.idTitular = idTitular;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	public long getDni() {
+		return dni;
+	}
+	public void setDni(long dni) {
+		this.dni = dni;
+	}
+	
+	public Titular(int idTitular, String nombre, String apellido, long dni) {
+		super();
+		this.idTitular = idTitular;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
+	}
+	
+	private boolean esDocumentoValido(long dni) {
+		return false;
+	}
+	
+}

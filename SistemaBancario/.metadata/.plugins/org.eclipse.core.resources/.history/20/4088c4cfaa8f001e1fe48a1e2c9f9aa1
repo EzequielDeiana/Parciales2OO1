@@ -1,0 +1,63 @@
+package modulo;
+
+public class Titular {
+	private int idTitular;
+	private String nombre;
+	private String apellido;
+	private long dni;
+	
+	public int getIdTitular() {
+		return idTitular;
+	}
+	public void setIdTitular(int idTitular) throws Exception {
+		if(esDocumentoValido(idTitular)){
+		this.idTitular = idTitular;
+		}
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	public long getDni() {
+		return dni;
+	}
+	public void setDni(long dni) {
+		this.dni = dni;
+	}
+	
+	public Titular(int idTitular, String nombre, String apellido, long dni) throws Exception {
+		super();
+		setIdTitular(idTitular);
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
+	}
+	
+	private boolean esDocumentoValido(int dni) throws Exception{
+		
+		Integer dniCoso = dni;
+		
+		if(dniCoso.toString().length() > 8 || dniCoso.toString().length() < 7) {
+			System.out.println(dni);
+			throw new Exception("DNI Invalido por cantidad de caracteres");
+		}
+		
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "Titular [idTitular=" + idTitular + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
+				+ "]";
+	}
+	
+	
+	
+}

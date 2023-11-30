@@ -1,0 +1,16 @@
+package test;
+
+import modulo.SistemaBancario;
+
+public class Test {
+
+	public static void main(String[] args) {
+		SistemaBancario s1 = new SistemaBancario();
+		
+		System.out.println(1);
+		
+		
+		
+	}
+
+}

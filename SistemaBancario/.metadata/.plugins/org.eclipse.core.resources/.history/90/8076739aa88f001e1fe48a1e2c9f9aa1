@@ -1,0 +1,111 @@
+package modulo;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SistemaBancario {
+
+	private List<Titular> lstTitulares;
+	private List<CuentaBancaria> lstCuentasBancarias;
+	
+	public List<Titular> getLstTitulares() {
+		return lstTitulares;
+	}
+	public void setLstTitulares(List<Titular> lstTitulares) {
+		this.lstTitulares = lstTitulares;
+	}
+	public List<CuentaBancaria> getLstCuentasBancarias() {
+		return lstCuentasBancarias;
+	}
+	public void setLstCuentasBancarias(List<CuentaBancaria> lstCuentasBancarias) {
+		this.lstCuentasBancarias = lstCuentasBancarias;
+	}
+	
+	public SistemaBancario() {
+		super();
+		this.lstTitulares = new ArrayList<Titular>();
+		this.lstCuentasBancarias = new ArrayList<CuentaBancaria>();
+	}
+	
+	//Metodos Titular
+	
+	public Titular traerTitular(long dni) {
+		int i = 0;
+		boolean encontrado = false;
+		Titular aux = null;
+		
+		while(i < lstTitulares.size() && encontrado == false) {
+			if(lstTitulares.get(i).getDni() == dni) {
+				encontrado = true;
+				aux = lstTitulares.get(i);
+			}
+			i++;
+		}
+		
+		return aux;
+	}
+	
+	public boolean agregarTitular(String nombre, String apellido, long dni) throws Exception{
+		if(traerTitular(dni)  != null) {
+			throw new Exception("Ya existe un titular con ese DNI");
+		}
+		return lstTitulares.add(new Titular(calcularProximoIDTitular(),nombre, apellido, dni));
+	}
+	
+	private int calcularProximoIDTitular() {
+		int id = 1;
+		
+		if(!lstTitulares.isEmpty()) {
+			id = lstTitulares.get(lstTitulares.size()-1).getIdTitular()+1;
+		}
+		
+		return id;
+	}
+	
+	//Metodos cuenta
+	
+	public CuentaBancaria traerCuentaBancaria(String nroCuenta) {
+		int i = 0;
+		boolean encontrado = false;
+		CuentaBancaria aux = null;
+		
+		while(i < lstCuentasBancarias.size() && encontrado == false) {
+			if(lstCuentasBancarias.get(i).getNroCuenta().compareTo(nroCuenta) == 0) {
+				encontrado = true;
+				aux = lstCuentasBancarias.get(i);
+			}
+			i++;
+		}
+		
+		return aux;
+	}
+	
+	public boolean agregarCuentaCorriente(Titular titular, float saldo, String nroCuenta, LocalDate fechaAlta, boolean cobraSueldo, float costoMantenimiento, boolean esPremium) throws Exception{
+		if(traerCuentaBancaria(nroCuenta) != null) {
+			throw new Exception("Ya existe una Cuenta con este numero de cuenta");
+		}
+		return lstCuentasBancarias.add(new CuentaCorriente(calcularProximoIDCuentaBancaria(), titular, saldo, nroCuenta, fechaAlta, cobraSueldo, costoMantenimiento, esPremium));
+	}
+	
+	public boolean agregarCuentaAhorro(Titular titular, double saldo, String nroCuenta, LocalDate fechaAlta, float limiteExtraccion) throws Exception{
+		if(traerCuentaBancaria(nroCuenta) != null) {
+			throw new Exception("Ya existe una Cuenta con este numero de cuenta");
+		}
+		return lstCuentasBancarias.add(new CuentaAhorro(calcularProximoIDCuentaBancaria(), titular, (float)saldo, nroCuenta, fechaAlta, limiteExtraccion));
+	}
+	
+	private int calcularProximoIDCuentaBancaria() {
+		int id = 1;
+		
+		if(!lstCuentasBancarias.isEmpty()) {
+			id = lstCuentasBancarias.get(lstCuentasBancarias.size()-1).getIdCuentaBancaria()+1;
+		}
+		
+		return id;
+	}
+	
+	
+	
+	
+}
