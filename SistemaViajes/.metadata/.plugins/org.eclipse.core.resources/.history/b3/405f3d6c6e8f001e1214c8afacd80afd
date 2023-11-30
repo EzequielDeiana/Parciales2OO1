@@ -1,0 +1,13 @@
+package modelo;
+
+import java.time.LocalDateTime;
+
+public class Viaje {
+	
+	private Tarjeta tarjeta;
+	private String linea;
+	private String medio;
+	private LocalDateTime fechaHoraViaje;
+	private double precio;
+	
+}

@@ -1,0 +1,12 @@
+package modelo;
+
+public class TarjetaJubilacion extends Tarjeta{
+	public TarjetaJubilacion(String codigo, int id, boolean descuentoActivo) {
+		super(codigo, id, descuentoActivo);
+		// TODO Auto-generated constructor stub
+	}
+
+	private double porcentajeDeDescuento;
+	
+	
+}

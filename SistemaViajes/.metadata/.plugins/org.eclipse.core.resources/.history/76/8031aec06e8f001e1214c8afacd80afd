@@ -1,0 +1,7 @@
+package modelo;
+
+public class TarjetaJubilacion extends Tarjeta{
+	private double porcentajeDeDescuento;
+	
+	
+}

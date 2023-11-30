@@ -1,0 +1,9 @@
+package modelo;
+
+public abstract class Tarjeta {
+	
+	protected String codigo;
+	protected int id;
+	protected boolean descuentoActivo;
+	
+}

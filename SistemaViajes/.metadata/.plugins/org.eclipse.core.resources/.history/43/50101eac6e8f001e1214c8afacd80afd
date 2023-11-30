@@ -1,0 +1,12 @@
+package modelo;
+
+public class TarjetaEstudiantil extends Tarjeta{
+
+	private double saldoAFavor;
+	
+	public TarjetaEstudiantil(String codigo, int id, boolean descuentoActivo, double saldoAfavor) {
+		super(codigo, id, descuentoActivo);
+		// TODO Auto-generated constructor stub
+	}
+	
+}

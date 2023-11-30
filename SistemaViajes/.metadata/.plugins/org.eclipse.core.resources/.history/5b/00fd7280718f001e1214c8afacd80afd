@@ -1,0 +1,97 @@
+package modelo;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SistemaViajes {
+	
+	private List<Tarjeta> tarjetas;
+	private List<Viaje> viajes;
+	
+	public List<Tarjeta> getTarjetas() {
+		return tarjetas;
+	}
+	public void setTarjetas(List<Tarjeta> tarjetas) {
+		this.tarjetas = tarjetas;
+	}
+	public List<Viaje> getViajes() {
+		return viajes;
+	}
+	public void setViajes(List<Viaje> viajes) {
+		this.viajes = viajes;
+	}
+	
+	public SistemaViajes() {
+		super();
+		this.tarjetas = new ArrayList<Tarjeta>();
+		this.viajes = new ArrayList<Viaje>();
+	}
+	
+	///Metodos de Tarjeta
+	
+	public Tarjeta traerTarjeta(String codigo) {
+		Tarjeta aux = null;
+		int i = 0;
+		boolean encontrado = false;
+		
+		while(i < tarjetas.size() && encontrado == false) {
+			if(tarjetas.get(i).codigo.compareTo(codigo) == 0) {
+				encontrado = true;
+				aux = tarjetas.get(i);
+			}
+			i++;
+		}
+		return aux;
+	}
+	
+	public boolean agregarTarjetaEstudiantil(String codigo, double sueldoAFavor, boolean descuentoActivo) throws Exception {
+		if(traerTarjeta(codigo) != null) {
+			throw new Exception("Ya existe una tarjeta en el sistema con ese Codigo");
+		}
+
+		return tarjetas.add(new TarjetaEstudiantil(calcularProximoIDTarjeta(), codigo, descuentoActivo, sueldoAFavor));
+	}
+	
+	public boolean agregarTarjetaJubilacion(String codigo, double porcentajeDeDescuento, boolean descuentoActivo) throws Exception {
+		if(traerTarjeta(codigo) != null) {
+			throw new Exception("Ya existe una tarjeta en el sistema con ese Codigo");
+		}
+
+		return tarjetas.add(new TarjetaEstudiantil(calcularProximoIDTarjeta(), codigo, descuentoActivo, porcentajeDeDescuento));
+	}
+	
+	private int calcularProximoIDTarjeta() {
+		int id = 1;
+		
+		if(!tarjetas.isEmpty()) {
+			id = tarjetas.get(tarjetas.size()-1).id+1;
+		}
+		return id;
+	}
+	
+	///Metodos de Viaje
+	
+	public List<Viaje> traerViaje(LocalDateTime desde, LocalDateTime hasta){
+		List<Viaje> lstAux = new ArrayList<Viaje>();
+		
+		for (Viaje viaje : viajes) {
+			if((viaje.getFechaHoraViaje().isEqual(desde)
+					|| viaje.getFechaHoraViaje().isAfter(desde))
+					&& (viaje.getFechaHoraViaje().isBefore(hasta)
+					|| viaje.getFechaHoraViaje().isEqual(hasta))) {
+				
+				lstAux.add(viaje);
+			}
+		}
+		return lstAux;
+	}
+	
+	public boolean agregarViaje(Tarjeta tarjeta, String linea, String medio, LocalDateTime fechaHoraViaje, double precio) throws Exception{
+
+		return viajes.add(new Viaje(tarjeta, linea, medio, fechaHoraViaje, precio));
+	}
+	
+	
+	
+}

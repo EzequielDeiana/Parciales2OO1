@@ -1,0 +1,12 @@
+package modelo;
+
+public class TarjetaJubilacion extends Tarjeta{
+
+	private double porcentajeDeDescuento;
+	
+	public TarjetaJubilacion(String codigo, int id, boolean descuentoActivo, double porcentajeDeDescuento) {
+		super(codigo, id, descuentoActivo);
+		this.porcentajeDeDescuento = porcentajeDeDescuento;
+	}
+	
+}

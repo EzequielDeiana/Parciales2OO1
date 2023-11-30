@@ -1,0 +1,48 @@
+package test;
+
+import modelo.SistemaViajes;
+
+public class testOO1 {
+
+	public static void main(String[] args) {
+		SistemaViajes s1 = new SistemaViajes();
+
+		try {
+			s1.agregarTarjetaEstudiantil("11111111", 1000.0, true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarTarjetaJubilacion("22222222", 40.0, true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarTarjetaJubilacion("33333333", 50.0, true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarTarjetaEstudiantil("44444444", 80.0, true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarTarjetaJubilacion("55555555", 40.0, true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			s1.agregarTarjetaJubilacion("66666666", 60.0, true);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
